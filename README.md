@@ -1,4 +1,4 @@
-# trace-elements-apatite-magnetite
+# Statistical analysis of trace elements in apatite and magnetite
 Code for statistical analysis in Master's dissertation, named: 
 
 *Trace element geochemistry of apatite and magnetite in gold systems of the Alta Floresta mineral province, NW Brazil: Petrogenetic and metallogenic implications*.
