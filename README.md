@@ -4,9 +4,10 @@ Code for statistical analysis in Master's dissertation, named:
 *Trace element geochemistry of apatite and magnetite in gold systems of the Alta Floresta mineral province, NW Brazil: Petrogenetic and metallogenic implications*.
 
 
-This R code contains some interesting machine learning algorithms for statistical analysis:
+This R code contains some interesting machine learning algorithms for statistical analysis of geochemical data:
 - Multiple linear regression
 - Ridge regression
+- Lasso
 - Principal Component Analysis (PCA)
 - Linear Discriminant Analysis (LDA)
 - Log ratio transformations for compositional data analysis (CoDA)
