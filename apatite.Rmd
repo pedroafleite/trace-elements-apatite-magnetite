@@ -2,7 +2,7 @@
 title: "Apatite trace elements"
 author: "Pedro Leite"
 date: "12-10-2020"
-output: markdown_github
+output: rmarkdown::github_document
 ---
 
 ## R markdown
