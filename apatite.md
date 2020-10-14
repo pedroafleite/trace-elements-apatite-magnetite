@@ -9,8 +9,7 @@ We will use R markdown to display the results
 
 ``` r
 library(ggplot2)
-library(gridExtra)
-library(yaml)
+  theme_set(theme_classic())
 library(formattable)
 library(knitr)
   knitr::opts_chunk$set(echo = FALSE)
@@ -47357,10 +47356,6 @@ The code for deleting the outliers from the elemental features
 
     ## [1]  55.19  46.09 573.08
 
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-3-8.png)<!-- -->
-
 Besides that, we would prefer to agglutinate Light Rare Earth Elements
 (LREE) into a singular feature, since they display similar patterns and
 might exhibit a better response if they are summed up together.
@@ -47368,90 +47363,4 @@ might exhibit a better response if they are summed up together.
 Once the corrections are made, we visualise the multielements boxplots
 via:
 
-    ## Warning: Removed 12 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
-
-    ## Warning: Removed 12 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
-
-    ## Warning: Removed 14 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->
-
-    ## Warning: Removed 12 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->
-
-    ## Warning: Removed 56 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-6.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-7.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-8.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-9.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-10.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-11.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-12.png)<!-- -->
-
-    ## Warning: Removed 12 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-13.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-14.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-15.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-16.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-17.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-18.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-19.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-20.png)<!-- -->
-
-    ## Warning: Removed 86 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-21.png)<!-- -->
-
-    ## Warning: Removed 61 rows containing non-finite values (stat_boxplot).
-
-![](apatite_files/figure-gfm/unnamed-chunk-5-22.png)<!-- -->
+![](apatite_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-6.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-7.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-8.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-9.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-10.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-11.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-12.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-13.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-14.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-15.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-16.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-17.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-18.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-19.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-20.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-21.png)<!-- -->
