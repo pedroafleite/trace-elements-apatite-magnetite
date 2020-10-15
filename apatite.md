@@ -5,23 +5,50 @@ Pedro Leite
 
 ## R markdown
 
-We will use R markdown to display the results
+We will use R markdown to throughly display the data of my MSc
+dissertation called “*Trace elements geochemistry of apatite and
+magnetite in gold systems of the Alta Floresta mineral province:
+Petrogenic and metallogenic implications*”, so that the experimental
+results contained in this work can be reproduced. This is a vital,
+though often neglected, part of any scientific endeavour. By exposing
+the nuts and bolts of my work, it can be continued, incremented,
+contested, and even used as a reference on how to do a geochemical
+analysis from the ground up using R.
+
+For the complete theoretical framework, the reader is referred to the
+full dissertation available [here](http://hdl.handle.net/11449/193761).
+
+We will start by importing the necessary libraries into R:
 
 ``` r
-library(ggplot2)
-  theme_set(theme_classic())
-library(formattable)
-library(knitr)
+library(ggplot2) #for beautiful plots
+  theme_set(theme_classic()) #to give plots a standard scientific flair
+library(formattable) #for beautiful tables
+library(knitr) #for rendering it in the web
   knitr::opts_chunk$set(echo = FALSE)
   knitr::opts_knit$set(root.dir= normalizePath('..'))
   knitr::opts_chunk$set(error = FALSE)
 ```
 
-## GitHub Documents
+## Trace elements in apatite
 
-This is an R Markdown format used for publishing markdown documents to
-GitHub. When you click the **Knit** button all R code chunks are run and
-a markdown file (.md) suitable for publishing to GitHub is generated.
+In this R markdown, we will only evaluate trace elements in apatite.
+Magnetite will be evaluated in another document.
+
+Why are trace elements in apatite important? The incorporation of
+certain trace elements in apatite may indicate specific physico-chemical
+processes in a mineral system. These processes generally involve the
+percolation of metal-bearing fluids in a rock substratum. If those
+processes are known to be ore-related, then the chemical composition of
+apatite may mirror the composition of the mineralising fluids, which may
+be a good indicator that you are near a new mineral deposit.
+
+We collected our own rock samples in the field by visiting mineral
+prospects in the Alta Floresta mineral province. We examined apatite
+grains via EMPA and LA-ICP-MS, two of most robust geochemical techniques
+available. The EMPA gave our major elements (exhibited in % wt.) and the
+LA-ICP-MS gave our trace elements (exhibited in ppm). We load the data
+here:
 
 <table class="table table-condensed">
 
@@ -47293,19 +47320,25 @@ NA
 
 ## Multielemental boxplots
 
-These diagrams are incredibly useful when analysing multiple elements
-from multiple sources as we did, and may be useful for other kinds of
-geochemical analysis.
+Boxplots are incredibly useful when analysing multiple elements from
+multiple sources as we did, and may be useful for other kinds of
+geochemical analysis as well. Geochemists depend on these boxplots to
+evaluate the relationships between the chemical results they obtained
+via EMPA and LA-ICP-MS and their petrographical analysis, which is the
+step undertook prior to the chemical analysis, in which the geochemist
+designated all the *a priori* classifications for the observed mineral
+morphologies and textures.
 
-However, before exhibiting those, we need to correct some of the
-boxplots in which a few outliers inhibit us from seeing the right scales
-of elemental concentrations in them. Otherwise, we would not visualise
-the proportions between each boxplot, and would not be able to evaluate
-them.
+However, before displaying the chemical analysis, we need to correct
+some of the boxplots, because a few outliers inhibited us from seeing
+the right scales of elemental concentrations. Otherwise, we would not be
+able to visualise the proportions between each boxplot, and would not be
+able to evaluate the relations between them correctly.
 
-In our case, the elements would be Mg, Sr, Ba, Pb, Ti, V and As. They
-were selected by trial-and-error, once the multielemental boxplots were
-made and the incongruencies were visually detected.
+In our case, the elements that would need to be rescaled are Mg, Sr, Ba,
+Pb, Ti, V and As. They were selected by trial-and-error, once the
+multielemental boxplots were made and the incongruencies were visually
+detected.
 
 The code for deleting the outliers from the elemental features
     follows:
@@ -47356,11 +47389,18 @@ The code for deleting the outliers from the elemental features
 
     ## [1]  55.19  46.09 573.08
 
-Besides that, we would prefer to agglutinate Light Rare Earth Elements
-(LREE) into a singular feature, since they display similar patterns and
-might exhibit a better response if they are summed up together.
+Besides that, we would prefer to sum up all Light Rare Earth Elements
+(LREE) into a single feature, since they display similar patterns and
+might exhibit a better response if summemd up together. The Eu/Eu,
+Ce/Ce, and La/Sm are also important geochemical ratios and will also be
+evaluated:
 
 Once the corrections are made, we visualise the multielements boxplots
 via:
 
 ![](apatite_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-6.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-7.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-8.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-9.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-10.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-11.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-12.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-13.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-14.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-15.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-16.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-17.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-18.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-19.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-20.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-21.png)<!-- -->
+
+The meaning of the subtitles is discussed in *Chapter 5* of the complete
+dissertation, about Petrography. The throughly description of the
+boxplots and their relationships is described in *Chapter 6*, about
+Geochemistry.
