@@ -25,7 +25,6 @@ library(ggplot2) #for beautiful plots
   theme_set(theme_classic()) #to give plots a standard scientific flair
 library(formattable) #for beautiful tables
 library(knitr) #for rendering it in the web
-  knitr::opts_chunk$set(echo = FALSE)
   knitr::opts_knit$set(root.dir= normalizePath('..'))
   knitr::opts_chunk$set(error = FALSE)
 ```
@@ -49,6 +48,16 @@ grains via EMPA and LA-ICP-MS, two of most robust geochemical techniques
 available. The EMPA gave our major elements (exhibited in % wt.) and the
 LA-ICP-MS gave our trace elements (exhibited in ppm). We load the data
 here:
+
+``` r
+geochem_ap <- read.csv2('C:/Users/Pedro/Documents/Rconsole/Apatite_git/geochem_ap.csv', 
+                        header = TRUE, 
+                        stringsAsFactors=TRUE, 
+                        na = "NA",
+                        dec = ".",
+                        sep=";")
+formattable(geochem_ap)
+```
 
 <table class="table table-condensed">
 
@@ -47340,54 +47349,160 @@ Pb, Ti, V and As. They were selected by trial-and-error, once the
 multielemental boxplots were made and the incongruencies were visually
 detected.
 
-The code for deleting the outliers from the elemental features
-    follows:
+The code for deleting the outliers from the elemental features follows:
+
+``` r
+#Removing outliers from Mg concentrations
+outliersMg <- boxplot(geochem_ap$Mg_ppm, ylab="Mg (ppm)")$out
+```
 
 ![](apatite_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
+``` r
+print("Mg outliers:")
+```
+
     ## [1] "Mg outliers:"
+
+``` r
+print(outliersMg)
+```
 
     ##  [1]  10210.59   2293.89   3249.27  15430.14   6117.28   2932.85   9673.03
     ##  [8] 121100.70   7601.19  87376.36  87130.60   8760.37   3895.30 183513.36
     ## [15]   2855.67
 
+``` r
+outap_Mg <- geochem_ap[-which(geochem_ap$Mg_ppm %in% outliersMg),]
+
+#Removing outliers from Sr concentrations
+outliersSr <- boxplot(geochem_ap$Sr_ppm, ylab="Sr (ppm)")$out
+```
+
 ![](apatite_files/figure-gfm/unnamed-chunk-3-2.png)<!-- -->
+
+``` r
+print("Sr outliers:")
+```
 
     ## [1] "Sr outliers:"
 
+``` r
+print(outliersSr)
+```
+
     ## [1] 3665.31  767.69  870.95  751.91
+
+``` r
+outap_Sr <- geochem_ap[-which(geochem_ap$Sr_ppm %in% outliersSr),]
+
+#Removing outliers from Ba concentrations
+outliersBa <- boxplot(geochem_ap$Ba_ppm, ylab="Ba (ppm)")$out
+```
 
 ![](apatite_files/figure-gfm/unnamed-chunk-3-3.png)<!-- -->
 
+``` r
+print("Ba outliers:")
+```
+
     ## [1] "Ba outliers:"
+
+``` r
+print(outliersBa)
+```
 
     ##  [1] 163.19  67.70 202.48 101.34  59.33 331.53 867.17 419.04 381.86 796.17
     ## [11]  44.95
 
+``` r
+outap_Ba <- geochem_ap[-which(geochem_ap$Ba_ppm %in% outliersBa),]
+
+#Removing outliers from Pb concentrations
+outliersPb <- boxplot(geochem_ap$Pb_ppm, ylab="Pb (ppm)")$out
+```
+
 ![](apatite_files/figure-gfm/unnamed-chunk-3-4.png)<!-- -->
+
+``` r
+print("Pb outliers:")
+```
 
     ## [1] "Pb outliers:"
 
+``` r
+print(outliersPb)
+```
+
     ##  [1] 34.08 75.45 19.83 80.06 26.71 47.83 35.45 39.02 30.70 20.59 67.37
+
+``` r
+outap_Pb <- geochem_ap[-which(geochem_ap$Pb_ppm %in% outliersPb),]
+
+#Removing outliers from Ti concentrations
+outliersTi <- boxplot(geochem_ap$Ti_ppm, ylab="Ti (ppm)")$out
+```
 
 ![](apatite_files/figure-gfm/unnamed-chunk-3-5.png)<!-- -->
 
+``` r
+print("Ti outliers:")
+```
+
     ## [1] "Ti outliers:"
+
+``` r
+print(outliersTi)
+```
 
     ##  [1]   2210.80   1157.41 198589.36   1280.66   2950.83   1128.25   1299.73
     ##  [8]   1477.82   1831.62 300480.09
 
+``` r
+outap_Ti <- geochem_ap[-which(geochem_ap$Ti_ppm %in% outliersTi),]
+
+#Removing outliers from V concentrations
+outliersV <- boxplot(geochem_ap$V_ppm, ylab="V (ppm)")$out
+```
+
 ![](apatite_files/figure-gfm/unnamed-chunk-3-6.png)<!-- -->
+
+``` r
+print("V outliers:")
+```
 
     ## [1] "V outliers:"
 
+``` r
+print(outliersV)
+```
+
     ## [1]   40.42   30.65   36.12  658.19  635.43  142.85 1211.60
+
+``` r
+outap_V <- geochem_ap[-which(geochem_ap$V_ppm %in% outliersV),]
+
+#Removing outliers from As concentrations
+outliersAs <- boxplot(geochem_ap$As_ppm, ylab="As (ppm)")$out
+```
 
 ![](apatite_files/figure-gfm/unnamed-chunk-3-7.png)<!-- -->
 
+``` r
+print("As outliers:")
+```
+
     ## [1] "As outliers:"
 
+``` r
+print(outliersAs)
+```
+
     ## [1]  55.19  46.09 573.08
+
+``` r
+outap_As <- geochem_ap[-which(geochem_ap$As_ppm %in% outliersAs),]
+```
 
 Besides that, we would prefer to sum up all Light Rare Earth Elements
 (LREE) into a single feature, since they display similar patterns and
@@ -47395,10 +47510,155 @@ might exhibit a better response if summemd up together. The Eu/Eu,
 Ce/Ce, and La/Sm are also important geochemical ratios and will also be
 evaluated:
 
+``` r
+SumLREE <- (geochem_ap[,"La_ppm"]+geochem_ap[,"Ce_ppm"]+geochem_ap[,"Pr_ppm"]+
+              geochem_ap[,"Nd_ppm"]+geochem_ap[,"Sm_ppm"])
+SumHREE <- (geochem_ap[,"Gd_ppm"]+geochem_ap[,"Tb_ppm"]+geochem_ap[,"Dy_ppm"]+
+              geochem_ap[,"Ho_ppm"]+geochem_ap[,"Er_ppm"]+geochem_ap[,"Tm_ppm"]+
+              geochem_ap[,"Yb_ppm"]+geochem_ap[,"Lu_ppm"])
+LaSm <- ((geochem_ap[,"La_ppm"]/0.237)/(geochem_ap[,"Sm_ppm"]/0.148))
+eueu <- ((geochem_ap[,"Eu_ppm"]/0.0563)*
+           (((geochem_ap[,"Sm_ppm"]/0.148)*(geochem_ap[,"Gd_ppm"]/0.199)))^-0.5)
+cece <- ((geochem_ap[,"Ce_ppm"]/0.613)*
+           (((geochem_ap[,"La_ppm"]/0.237)*(geochem_ap[,"Pr_ppm"]/0.0928)))^-0.5)
+
+geochem_ap$SumLREE=SumLREE
+geochem_ap$SumHREE=SumHREE
+geochem_ap$LaSm=LaSm
+geochem_ap$eueu=eueu
+geochem_ap$cece=cece
+```
+
 Once the corrections are made, we visualise the multielements boxplots
 via:
 
-![](apatite_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-6.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-7.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-8.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-9.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-10.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-11.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-12.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-13.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-14.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-15.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-16.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-17.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-18.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-19.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-20.png)<!-- -->![](apatite_files/figure-gfm/unnamed-chunk-5-21.png)<!-- -->
+``` r
+qplot(Zone, Ca_pct, data=geochem_ap, geom="boxplot", colour=Class, ylab="Ca (wt. %)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+``` r
+qplot(Zone, P_pct, data=geochem_ap, geom="boxplot", colour=Class, ylab="P (wt. %)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
+
+``` r
+qplot(Zone, Cl_pct, data=geochem_ap, geom="boxplot", colour=Class, ylab="Cl (wt. %)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-3.png)<!-- -->
+
+``` r
+qplot(Zone, F_pct, data=geochem_ap, geom="boxplot", colour=Class, ylab="F (wt. %)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-4.png)<!-- -->
+
+``` r
+qplot(Zone, Na_pct, data=geochem_ap, geom="boxplot", colour=Class, ylab="Na (wt. %)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-5.png)<!-- -->
+
+``` r
+p6 <- qplot(Zone, Si_pct, data=geochem_ap, geom="boxplot", colour=Class, ylab="Si (wt. %)")
+
+qplot(Zone, Mg_ppm, data=outap_Mg, geom="boxplot", colour=Class, ylab="Mg (ppm)") 
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-6.png)<!-- -->
+
+``` r
+qplot(Zone, Mn_ppm, data=geochem_ap, geom="boxplot", colour=Class, ylab="Mn (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-7.png)<!-- -->
+
+``` r
+qplot(Zone, Sr_ppm, data=outap_Sr, geom="boxplot", colour=Class, ylab="Sr (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-8.png)<!-- -->
+
+``` r
+qplot(Zone, Ba_ppm, data=outap_Ba, geom="boxplot", colour=Class, ylab="Ba (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-9.png)<!-- -->
+
+``` r
+qplot(Zone, Pb_ppm, data=outap_Pb, geom="boxplot", colour=Class, ylab="Pb (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-10.png)<!-- -->
+
+``` r
+qplot(Zone, Ti_ppm, data=outap_Ti, geom="boxplot", colour=Class, ylab="Ti (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-11.png)<!-- -->
+
+``` r
+qplot(Zone, Fe_pct, data=geochem_ap, geom="boxplot", colour=Class, ylab="Fe (wt. %)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-12.png)<!-- -->
+
+``` r
+qplot(Zone, SumLREE, data=geochem_ap, geom="boxplot", colour=Class, ylab="LREE (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-13.png)<!-- -->
+
+``` r
+qplot(Zone, SumHREE, data=geochem_ap, geom="boxplot", colour=Class, ylab="HREE (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-14.png)<!-- -->
+
+``` r
+qplot(Zone, Eu_ppm, data=geochem_ap, geom="boxplot", colour=Class, ylab="Eu (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-15.png)<!-- -->
+
+``` r
+qplot(Zone, Y_ppm, data=geochem_ap, geom="boxplot", colour=Class, ylab="Y (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-16.png)<!-- -->
+
+``` r
+qplot(Zone, V_ppm, data=outap_V, geom="boxplot", colour=Class, ylab="V (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-17.png)<!-- -->
+
+``` r
+qplot(Zone, As_ppm, data=outap_As, geom="boxplot", colour=Class, ylab="As (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-18.png)<!-- -->
+
+``` r
+qplot(Zone, Th232_ppm, data=geochem_ap, geom="boxplot", colour=Class, ylab="Th (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-19.png)<!-- -->
+
+``` r
+qplot(Zone, U238_ppm.1, data=geochem_ap, geom="boxplot", colour=Class, ylab="U (ppm)")
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-20.png)<!-- -->
+
+``` r
+qplot(Zone, Ge_ppm, data=geochem_ap, geom="boxplot", colour=Class, ylab="Ge (ppm)") 
+```
+
+![](apatite_files/figure-gfm/unnamed-chunk-5-21.png)<!-- -->
 
 The meaning of the subtitles is discussed in *Chapter 5* of the complete
 dissertation, about Petrography. The throughly description of the
