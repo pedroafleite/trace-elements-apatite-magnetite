@@ -30,4 +30,4 @@ It also contains data visualisation techniques:
 - Biplots (for PCA)
 - Design of petrological diagrams
 
-Most of the code is interchangeable between apatite and magnetite trace element data. Magnetite trace element analysis will be published further on.
+Most of the code is interchangeable between apatite and magnetite trace element data. Magnetite trace element analysis will be published later on.
