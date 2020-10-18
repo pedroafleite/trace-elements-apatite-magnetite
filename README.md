@@ -5,6 +5,16 @@ Code for the statistical analysis in my MS dissertation:
 
 The complete dissertation is also available [here at Github](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/leite2020_dissertation.pdf).
 
+## Introduction
+
+Indicator minerals, such as apatite and magnetite, are useful for discriminating between barren igneous rocks and hydrothermal alteration halos, since they display contrasting chemical compositions that allow us to infer the distance to a mineral deposit, and to know which type of deposit it is. In this study, textural and compositional patterns in apatite and magnetite were evaluated in the Paleoproterozoic mineral deposits of the Alta Floresta mineral province, in the Amazon Craton, to appraise whether there are unrealised metallogenic potentials in the region. 
+
+Samples were collected from the barren host rocks and from the hydrothermally altered zones of three intrusion-hosted gold deposits (Luizão, Pé Quente and X1 deposits), one epithermal Au + base metals deposit (Francisco deposit), and one barren granitic unit (Teles Pires Intrusive Suite). Apatite and magnetite compositions were measured by electron microprobe (EMP) and laser ablation-inductively coupled plasma-mass spectrometry (LA-ICP-MS). Geochemical data was treated, statistically evaluated, analysed for principal components (PCA), and applied to linear discriminant functions (LDA). 
+
+# Conclusion highlights
+- Phyllic-related apatite displays distinctly high Mn and HREE concentrations, similar to apatites from porphyry Cu-Au deposits (in Mao et al., 2016).
+- Hydrothermal apatite displays a general decrease in Sr contents and increase in Mn, REE, Y and Fe.
+
 ## Data availability
 The datasets analysed in this study are available as:
 - [Apatite dataset](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/geochem_ap.csv)
@@ -32,3 +42,7 @@ It also contains data visualisation techniques:
 - Design of petrological diagrams
 
 Most of the code is interchangeable between apatite and magnetite trace element data. Magnetite trace element analysis will be published later on.
+
+## References
+
+Mao, M., Rukhlov, A. S., Rowins, S. M., Spence, J., & Coogan, L. A. 2016. Apatite trace element compositions: a robust new tool for mineral exploration. *Economic Geology*, 111(5), 1187-1222.
