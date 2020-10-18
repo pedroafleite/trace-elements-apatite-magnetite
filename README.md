@@ -1,16 +1,16 @@
 # Statistical analysis of trace elements in apatite and magnetite
-Code for statistical analysis in Master's dissertation, named: 
+Code for statistical analysis in my MS dissertation: 
 
-*Trace element geochemistry of apatite and magnetite in gold systems of the Alta Floresta mineral province, NW Brazil: Petrogenetic and metallogenic implications*.
+- [Trace element geochemistry of apatite and magnetite in gold systems of the Alta Floresta mineral province, NW Brazil: Petrogenetic and metallogenic implications](http://hdl.handle.net/11449/193761).
 
-The complete dissertation can be seen [here at Github](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/leite2020_dissertation.pdf), or at the [repositorium of my university](http://hdl.handle.net/11449/193761).
+The complete dissertation is also available [here at Github](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/leite2020_dissertation.pdf).
 
 The datasets analysed in this study are available as:
-- [Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/geochem_ap.csv)
-- Magnetite (*Available soon*)
+- [Apatite dataset](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/geochem_ap.csv)
+- Magnetite dataset (*Available soon*)
 
 
-The code for replicating the study in apatite is displayed in the following R markdowns:
+The code for replicating the study in apatite is displayed by the following R markdowns:
 
 - [Part 1: Data Exploration of Trace Elements in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part1_apatite.md#part-1-data-exploration-of-trace-elements-in-apatite)
 
