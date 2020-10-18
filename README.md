@@ -1,5 +1,5 @@
-# Statistical analysis of trace elements in apatite and magnetite
-Code for statistical analysis in my MS dissertation: 
+# Indicator Minerals As Proxies for Mineral Deposits: Statistical Analysis of Trace Elements in Apatite and Magnetite
+Code for the statistical analysis in my MS dissertation: 
 
 - [Trace element geochemistry of apatite and magnetite in gold systems of the Alta Floresta mineral province, NW Brazil: Petrogenetic and metallogenic implications](http://hdl.handle.net/11449/193761).
 
@@ -10,7 +10,7 @@ The datasets analysed in this study are available as:
 - Magnetite dataset (*Available soon*)
 
 
-The code for replicating the study in apatite is displayed by the following R markdowns:
+The code for replicating the study in apatite is displayed in the following R markdowns:
 
 - [Part 1: Data Exploration of Trace Elements in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part1_apatite.md#part-1-data-exploration-of-trace-elements-in-apatite)
 
