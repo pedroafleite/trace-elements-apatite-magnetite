@@ -5,18 +5,19 @@ Code for the statistical analysis in my MS dissertation:
 
 The complete dissertation is also available [here at Github](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/leite2020_dissertation.pdf).
 
+## Data availability
 The datasets analysed in this study are available as:
 - [Apatite dataset](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/geochem_ap.csv)
 - Magnetite dataset (*Available soon*)
 
-
+## Data reproducibility
 The code for replicating the study in apatite is displayed in the following R markdowns:
 
 - [Part 1: Data Exploration of Trace Elements in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part1_apatite.md#part-1-data-exploration-of-trace-elements-in-apatite)
 
 - [Part 2: Multivariate Discriminat Analysis in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part2_apatite_discriminant.md)
 
-
+## What to expect
 This R code contains machine learning algorithms applied for geochemical data:
 - Multiple linear regression
 - Ridge regression
