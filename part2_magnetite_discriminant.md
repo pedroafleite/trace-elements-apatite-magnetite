@@ -18,7 +18,6 @@ Mirroring the process in apatite, we import the libraries:
 library(ggplot2) #for beautiful plots
   theme_set(theme_classic()) #to give plots a standard scientific flair
 library(formattable) #for (somewhat) beautiful tables
-                     #I was having trouble with 'gt' package)
 library(compositions)#For Compositional Data Analysis (CoDA)
 library (pls) #for PCA
 library(ggbiplot) #sophisticated biplot for PCA
@@ -45,7 +44,13 @@ magnetite will not be shown since, for technical reasons, it was not
 analysed via LA-ICP-MS, which would constitute the main method of
 detection of trace elements.
 
-## Principal Component Analysis
+## 2\. Compositional Data Analysis
+
+``` r
+clo_mag <- acomp(geochem_mag)
+```
+
+## 3\. Principal Component Analysis
 
 We will firstly analyse which elements we have obtained in our
 experiments:
@@ -72,12 +77,6 @@ names(geochem_mag)
 There are a total of 69 elements. The selected elements were \[Mn, Sm,
 Eu, Dy, Yb, Y, F, La, Pb, Th, U, Ge, Cl, Sr and As\]. To execute the
 PCA, we cannot have NA values. So, we define how many there are by:
-
-## 2\. Compositional Data Analysis
-
-``` r
-clo_mag <- acomp(geochem_mag)
-```
 
 ``` r
 sum(is.na(clo_mag))
@@ -163,8 +162,8 @@ geochem_mag2 <- geochem_mag[,c("Sample", "Deposit", "Zone", "Alteration",
                                "Sn_ppm", "Ga_ppm", "Co_ppm", "V_ppm", "Ni_ppm")]
 geochem_mag2 = na.omit(geochem_mag2)
 clo_mag1 <- rcomp(geochem_mag2)
-clo_mag2 <- geochem_mag2[,c(1:5)]
-clo_mag3 <- clo_mag1[,c(6:14)]
+clo_mag2 <- geochem_mag2[,c(1:4)]
+clo_mag3 <- clo_mag1[,c(5:14)]
 
 #A column for each category
 geochem_mag_sample <- as.factor(clo_mag2$Sample)
@@ -197,6 +196,12 @@ ggbiplot(pr.out2, choices=4:5, data=pca, groups=geochem_mag_zone)# reducing it t
 ```
 
 ![](part2_magnetite_discriminant_files/figure-gfm/unnamed-chunk-10-4.png)<!-- -->
+
+``` r
+ggbiplot(pr.out2, choices=5:6, data=pca, groups=geochem_mag_zone)# reducing it to the fifth and sixth principal components
+```
+
+![](part2_magnetite_discriminant_files/figure-gfm/unnamed-chunk-10-5.png)<!-- -->
 
 For a thoroughly discussion on the implications of these patterns, see
 the complete dissertation [here](http://hdl.handle.net/11449/193761).
