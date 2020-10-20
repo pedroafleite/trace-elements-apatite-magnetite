@@ -9,7 +9,7 @@ The complete dissertation is also available [here at Github](https://github.com/
 ## Data availability
 The datasets analysed in this study are available as:
 - [Apatite dataset](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/geochem_ap.csv)
-- Magnetite dataset (*Available soon*)
+- [Magnetite dataset](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/geochem_mag.csv)
 
 ## Data reproducibility
 The code for replicating the study is displayed in the following R markdowns:
@@ -24,7 +24,7 @@ The code for replicating the study is displayed in the following R markdowns:
 
 - [Part 1: Data Exploration of Trace Elements in Magnetite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part1_magnetite.md)
 
-- [Part 2: Multivariate Discriminat Analysis in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part2_apatite_discriminant.md)
+- [Part 2: Multivariate Discriminat Analysis in Magnetite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part2_magnetite_discriminant.md)
 
 ## What is it about?
 Indicator minerals, such as apatite and magnetite, are useful for discriminating between barren igneous rocks and hydrothermal alteration halos, since they display contrasting chemical compositions that allow us to infer the distance to a mineral deposit, and to know which type of deposit it is. In this study, textural and compositional patterns in apatite and magnetite were evaluated in the mineral deposits of the Alta Floresta mineral province, in the Amazon Craton, to appraise whether there are potentially unrealised mineral deposits in the region. 
