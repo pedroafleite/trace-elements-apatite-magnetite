@@ -12,9 +12,17 @@ The datasets analysed in this study are available as:
 - Magnetite dataset (*Available soon*)
 
 ## Data reproducibility
-The code for replicating the study in apatite is displayed in the following R markdowns:
+The code for replicating the study is displayed in the following R markdowns:
 
-- [Part 1: Data Exploration of Trace Elements in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part1_apatite.md#part-1-data-exploration-of-trace-elements-in-apatite)
+### Apatite
+
+- [Part 1: Data Exploration of Trace Elements in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part1_apatite.md)
+
+- [Part 2: Multivariate Discriminat Analysis in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part2_apatite_discriminant.md)
+
+### Magnetite
+
+- [Part 1: Data Exploration of Trace Elements in Magnetite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part1_magnetite.md)
 
 - [Part 2: Multivariate Discriminat Analysis in Apatite](https://github.com/pedroafleite/trace-elements-apatite-magnetite/blob/main/part2_apatite_discriminant.md)
 
